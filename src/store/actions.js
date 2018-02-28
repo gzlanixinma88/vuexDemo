@@ -24,6 +24,6 @@ export default {
       const todos = storageUtil.readTodos()
       // 提交mutation
       commit(RECEIVE_TODOS, todos)
-    }, 3000)
+    }, 1000)
   }
 }
