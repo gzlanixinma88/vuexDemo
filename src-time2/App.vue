@@ -9,17 +9,22 @@
 </template>
 
 <script>
+  import {mapState, mapGetters, mapActions} from 'vuex'
   export default {
+
     computed:{
-      count(){
+      ...mapState(['count']),
+      ...mapGetters(['evenOrOdd']),
+     /* count(){
         return this.$store.state.count
       },
       evenOrOdd(){
         return this.$store.getters.evenOrOdd
-      }
+      }*/
     },
     methods:{
-      increment(){
+      ...mapActions(['increment','decrement','incrementIfOdd','incrementAsync']),
+      /*increment(){
         this.$store.dispatch('increment')
       },
       decrement(){
@@ -30,7 +35,7 @@
       },
       incrementAsync(){
         this.$store.dispatch('incrementAsync')
-      }
+      }*/
     }
   }
 </script>
