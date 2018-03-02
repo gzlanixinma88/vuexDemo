@@ -1,7 +1,7 @@
 <template>
   <li :style="{background: bgColor}" @mouseenter="handleEnter(true)" @mouseleave="handleEnter(false)">
     <label>
-      <input type="checkbox" v-model="todo.completed" />
+      <input type="checkbox" v-model="isCheck" />
       <span>{{todo.title}}</span>
     </label>
     <button class="btn btn-danger" v-show="isShow" @click="deleteItem">删除</button>
@@ -35,6 +35,16 @@
         if (window.confirm(`确定删除${todo.title}吗？`)){
           //deleteTodo(index)
           this.$store.dispatch('deleteTodo',index)
+        }
+      }
+    },
+    computed:{
+      isCheck:{
+        get(){
+          return this.todo.completed
+        },
+        set(value){
+          this.$store.dispatch(checkTodo, {todo:this.todo, check:value})
         }
       }
     }
